@@ -13,7 +13,7 @@ public class Postagem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Email
     private String email;
@@ -29,11 +29,11 @@ public class Postagem {
     @UpdateTimestamp
     private LocalDateTime data;
 
-    public Long getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
