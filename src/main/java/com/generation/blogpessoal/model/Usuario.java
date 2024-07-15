@@ -20,7 +20,7 @@ public class Usuario {
     private String nome;
 
     @NotBlank(message = "O Usuário é obrigatório")
-    @Size(min = 3, max = 100, message = "O atributo Usuário deve conter no mínimo 3 e no máximo 100 caracteres")
+    @Size(min = 3, max = 100, message = "O atributodeve ser um email válido!")
     private String usuario;
 
     @NotBlank(message = "A senha é obrigatório")
