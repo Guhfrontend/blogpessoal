@@ -26,7 +26,7 @@ public class TemaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Tema> getById(@PathVariable Integer id){
+    public ResponseEntity<Tema> getById(@PathVariable Long id){
             return temaRepository.findById(id).map(resposta -> ResponseEntity.ok(resposta)).orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
@@ -47,10 +47,8 @@ public class TemaController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping(value = "/{id}")
-    public void delete(@PathVariable Integer id){
-        Optional<Tema> Tema = temaRepository.findById(id);
-        if (Tema.isEmpty())
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    public void delete(@PathVariable Long id){
+        temaRepository.findById(id).stream().findFirst().orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         temaRepository.deleteById(id);
     }

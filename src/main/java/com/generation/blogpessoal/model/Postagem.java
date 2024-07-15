@@ -15,7 +15,7 @@ public class Postagem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Email
     private String email;
@@ -32,17 +32,21 @@ public class Postagem {
     private LocalDateTime data;
 
     @ManyToOne
-    @JsonIgnoreProperties("postagem")
+    @JsonIgnoreProperties("postagems")
     private Tema tema;
+
+    @ManyToOne
+    @JsonIgnoreProperties("postagem")
+    private Usuario usuario;
 
     public Postagem() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -84,5 +88,13 @@ public class Postagem {
 
     public void setTema(Tema tema) {
         this.tema = tema;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

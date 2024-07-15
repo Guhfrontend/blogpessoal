@@ -1,7 +1,6 @@
 package com.generation.blogpessoal.Controller;
 
 import com.generation.blogpessoal.model.Postagem;
-import com.generation.blogpessoal.model.Tema;
 import com.generation.blogpessoal.repository.PostagemRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +25,15 @@ public class PostagemController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Postagem> getById(@PathVariable Integer id){
+    public ResponseEntity<Postagem> getById(@PathVariable Long id){
         return postagemRepository.findById(id).map(resposta -> ResponseEntity.ok(resposta)).orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
-    @GetMapping("/{Titulo}")
-    public ResponseEntity<List<Postagem>> getByTitulo(@PathVariable String titulo){
+    @GetMapping("/titulo/{titulo}")
+    public ResponseEntity <List<Postagem>> getByTitulo(@PathVariable String titulo){
         return ResponseEntity.ok(postagemRepository.findAllByTituloContainingIgnoreCase(titulo));
     }
+
 
     @PostMapping
     public ResponseEntity<Postagem> post(@Valid @RequestBody Postagem postagem){
@@ -47,7 +47,7 @@ public class PostagemController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping(value = "/{id}")
-    public void delete(@PathVariable Integer id){
+    public void delete(@PathVariable Long id){
         Optional<Postagem> postagem = postagemRepository.findById(id);
         if (postagem.isEmpty())
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
