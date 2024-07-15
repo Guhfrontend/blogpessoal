@@ -15,6 +15,7 @@ A aplicação é um CRUD para um blog, abrangendo temas, postagens e usuários c
 
 ## Desafio de conhecimento Proposto
 
+![SpringSecurity](https://github.com/user-attachments/assets/667d6c48-60ae-438e-a296-4e768c64adfe)
 
 
 # Tecnologias utilizadas
