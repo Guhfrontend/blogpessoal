@@ -1,4 +1,4 @@
-package com.generation.blogpessoal.Controller;
+package com.generation.blogpessoal.controller;
 
 import com.generation.blogpessoal.model.Postagem;
 import com.generation.blogpessoal.repository.PostagemRepository;
