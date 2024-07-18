@@ -24,6 +24,11 @@ public class Tema {
     public Tema (){
     }
 
+    public Tema(Long id, String descricao) {
+        this.id = id;
+        this.descricao = descricao;
+    }
+
     public Long getId() {
         return id;
     }
