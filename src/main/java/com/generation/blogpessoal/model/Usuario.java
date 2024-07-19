@@ -1,6 +1,7 @@
 package com.generation.blogpessoal.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -19,6 +20,7 @@ public class Usuario {
     @Size(min = 3, max = 100, message = "O atributo Nome deve conter no mínimo 3 caracteres")
     private String nome;
 
+    @Schema(example = "email@email.com.br")
     @NotBlank(message = "O Usuário é obrigatório")
     @Size(min = 3, max = 100, message = "O atributo deve ser um email válido!")
     private String usuario;

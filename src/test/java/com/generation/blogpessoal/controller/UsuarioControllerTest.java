@@ -54,12 +54,12 @@ public class UsuarioControllerTest {
     @DisplayName("Não deve permitir duplicação de Usuário")
     public void naoDeveDuplicarUsuario() {
 
-        usuarioService
-                .cadastrarUsuario(new Usuario(0L, "Maria da Silva", "maria_silva@email.com.br", "123456789", "-"));
-        HttpEntity<Usuario> corpoRequisicao = new HttpEntity<Usuario>(
-                new Usuario(0L, "Maria da Silva", "maria_silva@email.com.br", "123456789", "-"));
-        ResponseEntity<Usuario> corpoResposta = testRestTemplate.exchange("/usuarios/cadastrar", HttpMethod.POST,
-                corpoRequisicao, Usuario.class);
+        usuarioService.cadastrarUsuario(new Usuario(0L, "Maria da Silva", "maria_silva@email.com.br", "123456789", "-"));
+
+        HttpEntity<Usuario> corpoRequisicao = new HttpEntity<>(new Usuario(0L, "Maria da Silva", "maria_silva@email.com.br", "123456789", "-"));
+
+        ResponseEntity<Usuario> corpoResposta = testRestTemplate.exchange("/usuarios/cadastrar", HttpMethod.POST, corpoRequisicao, Usuario.class);
+
         assertEquals(HttpStatus.BAD_REQUEST, corpoResposta.getStatusCode());
     }
 
@@ -82,10 +82,10 @@ public class UsuarioControllerTest {
     @DisplayName("Listar todos os Usuários")
     public void deveMostrarTodosUsuarios() {
 
-        usuarioService
-                .cadastrarUsuario(new Usuario(0L, "Maria da Silva", "maria_silva@email.com.br", "123456789", "-"));
-        usuarioService
-                .cadastrarUsuario(new Usuario(0L, "Paulo Antunes", "paulo_antunes@email.com.br", "123456789", "-"));
+        usuarioService.cadastrarUsuario(new Usuario(0L, "Maria da Silva", "maria_silva@email.com.br", "123456789", "-"));
+
+        usuarioService.cadastrarUsuario(new Usuario(1L, "Paulo Antunes", "paulo_antunes@email.com.br", "123456789", "-"));
+
         ResponseEntity<String> resposta = testRestTemplate.withBasicAuth("root@root.com","rootroot").exchange("/usuarios/all", HttpMethod.GET,null,String.class);
         assertEquals(HttpStatus.OK,resposta.getStatusCode());
     }
