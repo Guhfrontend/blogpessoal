@@ -8,8 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.List;
+import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/temas")
@@ -29,8 +30,8 @@ public class TemaController {
             return temaRepository.findById(id).map(resposta -> ResponseEntity.ok(resposta)).orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
-    @GetMapping("/{descricao}")
-    public ResponseEntity<List<Tema>> getByDescricao(@PathVariable String descricao){
+    @GetMapping("/descricao/{descricao}")
+    public ResponseEntity<List<Tema>> getByTitle(@PathVariable String descricao){
         return ResponseEntity.ok(temaRepository.findAllByDescricaoContainingIgnoreCase(descricao));
     }
 
