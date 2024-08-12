@@ -11,7 +11,7 @@ uso de anotações do Spring. Implementamos métodos DTO para a criação e mani
 
 A aplicação é um CRUD para um blog, abrangendo temas, postagens e usuários cadastrados com e-mails válidos. Utilizamos JUnit para garantir a qualidade do código por meio de testes unitários, empregando um banco de dados local chamado H2 para os testes. O H2 é um banco de dados em memória que armazena dados apenas enquanto a aplicação está em execução.
 
-Para o deploy, escolhi a plataforma Render. Como o MySQL é pago nessa plataforma, optei por usar o PostgreSQL, adicionando a dependência correspondente. Além disso, criamos um container da 
+Para o deploy, escolhi a plataforma Render. Como o MySQL é pago nessa plataforma, optei por usar o PostgreSQL, adicionando a dependência correspondente. Além disso, criei um container da 
 aplicação utilizando Docker para facilitar o deploy e garantir a portabilidade.
 
 
